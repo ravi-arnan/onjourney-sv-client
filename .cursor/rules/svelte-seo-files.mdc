@@ -1,0 +1,40 @@
+---
+description: File-scoped guidance for Svelte and SvelteKit SEO implementation details
+globs: **/*.{svelte,ts,js}
+alwaysApply: false
+---
+
+# Svelte/SvelteKit SEO File Rules
+
+Apply this when changing route components, page loads, layout logic, or SEO utilities.
+
+## Route Metadata
+
+- Define route-level SEO in a centralized, typed shape (title, description, canonical, image, robots, schema).
+- Normalize canonical URLs to one host/path format; remove tracking/query noise where appropriate.
+- Keep metadata generation side-effect free and testable.
+
+## SSR and Content Discoverability
+
+- Ensure meaningful content is present in SSR output for indexable pages.
+- Do not gate core page copy behind client-only fetch when data can be loaded server-side.
+- Avoid hidden or delayed-render critical text that search engines need to index.
+
+## Structured Data
+
+- Use valid JSON-LD for applicable page types (Article, FAQPage, Organization, BreadcrumbList, etc.).
+- Keep schema fields sourced from real page data; no placeholder values in production.
+- Validate generated schema shape before shipping.
+
+## Routing and Crawl Control
+
+- Guard against duplicate route variants (trailing slash, locale alias, query-driven duplicates).
+- Use explicit robots directives only where needed (draft/previews/private pages).
+- Ensure `sitemap.xml` generation reflects canonical indexable routes only.
+
+## Verification Checklist
+
+- View page source and confirm title, description, canonical, and robots tags are present.
+- Confirm OG/Twitter metadata appears on first render.
+- Confirm schema script is valid JSON and matches visible content.
+- Run lint/tests for changed modules and fix regressions before completion.

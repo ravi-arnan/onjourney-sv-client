@@ -1,0 +1,29 @@
+---
+description: Core standards for SEO-first SvelteKit implementation and agent workflow
+alwaysApply: true
+---
+
+# Svelte SEO Always-On Standards
+
+- Treat all user-facing pages as SEO-sensitive unless explicitly marked internal.
+- Prefer server-rendered, crawlable HTML for primary content.
+- Keep metadata deterministic at initial render; avoid client-only title and description updates.
+- Always include canonical URL strategy and avoid duplicate-content paths.
+- Add descriptive title and meta description for each route-level page.
+- Include Open Graph and Twitter metadata for share previews when relevant.
+- Ensure heading structure is semantic and ordered (`h1` then nested headings).
+- Use meaningful link text and alt text for crawlability and accessibility.
+- For indexable pages, include structured data (JSON-LD) when it clarifies content type.
+- Require internal linking from at least one crawlable path for new public pages.
+- For new or changed public routes, ensure sitemap and robots expectations are reviewed.
+- Avoid noindex on production content unless explicitly requested.
+- Preserve performance-critical SEO signals (fast LCP, minimal layout shift, low blocking JS).
+
+# Agent Execution Requirements
+
+- When working with `.svelte` or `.svelte.ts/.svelte.js`, use the Svelte MCP workflow:
+  1. `list-sections`
+  2. `get-documentation` for relevant sections
+  3. `svelte-autofixer` until no issues remain
+- Keep edits aligned with project standards from `AGENTS.md`.
+- Prefer small, focused helpers over long functions; keep logic compact.
