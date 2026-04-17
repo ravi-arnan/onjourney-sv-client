@@ -76,9 +76,9 @@
 			<div class="ml-auto flex items-center gap-8">
 				<a href="/login" class="text-sm text-[#2097f5]">Login</a>
 
-				<button class="rounded-lg bg-[#2097f5] px-6 py-2 text-white">
+				<a href="/auth/register" class="rounded-lg bg-[#2097f5] px-6 py-2 text-white">
 					Sign Up
-				</button>
+				</a>
 			</div>
 		</div>
 	</div>

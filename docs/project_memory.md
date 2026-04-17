@@ -158,3 +158,20 @@
 ### Next Steps
 - Lanjutkan cleanup warning `on:click` yang tersisa pada komponen legacy lain (khususnya `Navbar.svelte`).
 - Evaluasi penghapusan `// @ts-nocheck` bertahap pada komponen booking setelah typing sudah stabil.
+
+## 2026-04-17 - Perbaikan bug interaksi navbar, package like, dan asset footer
+
+### Current State
+- Tombol heart di `PackageCard` sekarang interaktif dan memanggil callback `onToggleLike(pkg)`.
+- Tombol `Sign Up` di `Navbar` sekarang berfungsi dan mengarah ke `/auth/register`.
+- Ikon Instagram di footer booking sudah memakai asset valid dari `static/icons/instagram.svg`.
+- State file lokal Cursor di `.cursor/hooks/state/` sudah dihapus dari workspace dan dikecualikan via `.gitignore`.
+
+### Decisions
+- Heart icon diganti menjadi elemen `<button>` agar aksesibel dan benar secara semantik.
+- Asset sosial dipindah ke `static` supaya path tetap valid di dev dan production.
+- File state IDE dianggap artefak lokal sehingga harus di-ignore untuk mencegah noise diff lintas mesin.
+
+### Next Steps
+- Tambahkan indikator visual state liked pada `PackageCard` jika data favorit backend/store sudah siap.
+- Pertimbangkan validasi route lama `/login` ke `/auth/login` secara konsisten di seluruh navbar legacy.

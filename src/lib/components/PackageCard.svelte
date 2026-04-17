@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-md"
+	class="relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-md"
 >
 	<!-- Package Header -->
 	<div class="flex items-center justify-between border-b border-gray-100 px-4 py-3">
@@ -41,24 +41,27 @@
 					>
 				</div>
 			{/if}
-			<div
-					class="group absolute top-2 right-2 z-[2] flex h-7 w-7 items-center justify-center rounded-full bg-white/30 text-white transition-colors duration-300 hover:bg-white/50"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-5 w-5 text-neutral-800/50 transition-colors duration-300 group-hover:text-neutral-800/80"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-				</div>
 		</div>
 	</a>
+	<button
+		type="button"
+		class="group absolute top-14 right-2 z-[2] flex h-7 w-7 items-center justify-center rounded-full bg-white/30 text-white transition-colors duration-300 hover:bg-white/50"
+		aria-label="Add to favourites"
+		onclick={() => onToggleLike?.(pkg)}
+	>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-5 w-5 text-neutral-800/50 transition-colors duration-300 group-hover:text-neutral-800/80"
+			viewBox="0 0 20 20"
+			fill="currentColor"
+		>
+			<path
+				fill-rule="evenodd"
+				d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+				clip-rule="evenodd"
+			/>
+		</svg>
+	</button>
 
 	<!-- Package Info -->
 	<div class="space-y-2.5 p-5">

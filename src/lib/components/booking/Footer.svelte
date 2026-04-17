@@ -17,7 +17,7 @@
 
 
       <a class="instagram" href="/">
-        <img src="/src/lib/assets/instagram.png" alt="Instagram" />
+        <img src="/icons/instagram.svg" alt="Instagram" />
       </a>
     </div>
   </Container>
