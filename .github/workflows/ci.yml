@@ -32,5 +32,9 @@ jobs:
       - name: Lint
         run: bun run lint
 
+      # Vitest `client` project uses @vitest/browser-playwright; install is skipped via --ignore-scripts
+      - name: Playwright (Chromium for Vitest browser tests)
+        run: bun exec playwright install chromium
+
       - name: Unit tests
         run: bun run test:unit -- --run
