@@ -1,5 +1,16 @@
 # Project Memory
 
+## 2026-04-18 - Dependabot untuk npm (bun.lock)
+
+### Current State
+- `.github/dependabot.yml` mengaktifkan **package-ecosystem `npm`** di root (`package.json` + `bun.lock`): jadwal mingguan Senin 09:00 `Asia/Jakarta`, label `dependencies` / `javascript`, commit `chore(deps)` dengan scope, batas 15 PR terbuka, grup **`npm-minor-patch`** untuk menggabungkan minor+patch (major tetap PR terpisah). Contoh `ignore` untuk major tertentu di-comment.
+
+### Decisions
+- Memakai ekosistem resmi `npm` karena Dependabot mendukung lockfile Bun di bawahnya; belum menambahkan pembaruan GitHub Actions sampai ada workflow di `.github/workflows/`.
+
+### Next Steps
+- Setelah CI ada, pertimbangkan `github-actions` ecosystem atau verifikasi PR Dependabot menjalankan `bun install` + `bun run check` / `bun run test`.
+
 ## 2026-04-18 - Panduan Git di README (trunk + spec-driven, contoh issue)
 
 ### Current State
