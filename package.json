@@ -48,6 +48,6 @@
 	},
 	"dependencies": {
 		"leaflet": "^1.9.4",
-		"lucide-svelte": "^0.575.0"
+		"lucide-svelte": "^1.0.1"
 	}
 }
