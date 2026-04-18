@@ -1,5 +1,17 @@
 # Project Memory
 
+## 2026-04-18 - Panduan Git di README (trunk + spec-driven, contoh issue)
+
+### Current State
+- `README.md` memuat **Git & Panduan Branch** lengkap: tabel filosofi trunk vs spec-driven, aturan trunk (PR kecil, tanpa `develop` permanen, hotfix), kapan wajib issue vs boleh langsung PR kecil, template issue Markdown, **tiga contoh issue** (fitur `/explore/packages`, bug booking summary, chore ESLint), konvensi branch + Conventional Commits, contoh alur `git` dan judul PR, contoh body PR, memecah pekerjaan besar, checklist pra-merge.
+
+### Decisions
+- Menyatukan trunk-based dan spec-driven: integrasi sering ke `main`, acceptance jelas sebelum kode mengunci arah; squash merge disarankan untuk riwayat linear.
+- Contoh issue memakai domain OnJourney (route explore/booking) agar mudah dipetakan ke codebase.
+
+### Next Steps
+- Selaraskan pengaturan repo GitHub (branch protection, required checks) dengan checklist di README bila belum.
+
 ## 2026-04-17 - Cursor setup for SEO-focused Svelte work
 
 ### Current State
