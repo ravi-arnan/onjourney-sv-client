@@ -1,11 +1,11 @@
 <!-- PackageCard.svelte -->
 <script>
 	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
 
 	let { pkg } = $props();
 
 	const slug = $derived($page.params.slug);
-	const detailUrl = $derived(`/travel-agent/${slug}/packages/detailpackages/${pkg.id}`);
 </script>
 
 <div class="relative w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
@@ -23,7 +23,10 @@
 			</div>
 			<!-- Agent Name -->
 			<div class="line-clamp-1 text-sm font-semibold">
-				<a href={detailUrl} class="hover:underline">
+				<a
+					href={resolve(`/travel-agent/${slug}/packages/detailpackages/${pkg.id}`)}
+					class="hover:underline"
+				>
 					PT. Bali Sundaram Travel
 				</a>
 			</div>
@@ -40,7 +43,7 @@
 	</div>
 
 	<!-- Image -->
-	<a href={detailUrl}>
+	<a href={resolve(`/travel-agent/${slug}/packages/detailpackages/${pkg.id}`)}>
 		<div class="relative">
 			<!-- Image Container -->
 			<div class="h-36 w-full overflow-hidden bg-gray-100">
@@ -102,7 +105,10 @@
 
 	<!-- Card Body -->
 	<div class="space-y-2.5 p-4">
-		<a href={detailUrl} class="hover:underline">
+		<a
+			href={resolve(`/travel-agent/${slug}/packages/detailpackages/${pkg.id}`)}
+			class="hover:underline"
+		>
 			<h3 class="line-clamp-2 text-base font-semibold text-gray-900">{pkg.title}</h3>
 		</a>
 
@@ -131,12 +137,14 @@
 
 		<!-- Price & CO2 Badge -->
 		<div class="mt-2 flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
-			<div class="flex items-baseline min-w-0 flex-shrink gap-1">
+			<div class="flex min-w-0 flex-shrink items-baseline gap-1">
 				<span class="truncate font-semibold text-blue-500">{pkg.price}</span>
 				<span class="text-xs text-gray-500">{pkg.duration}</span>
 			</div>
-			
-			<div class="flex flex-shrink-0 items-center justify-center gap-1.5 rounded-full border border-green-200 bg-[#ebfbf0] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#166534]">
+
+			<div
+				class="flex flex-shrink-0 items-center justify-center gap-1.5 rounded-full border border-green-200 bg-[#ebfbf0] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#166534]"
+			>
 				<img src="/img/leaf.png" class="h-4 w-4" alt="CO2" />
 				{pkg.co2 || '673.75 kg CO₂e'}
 			</div>

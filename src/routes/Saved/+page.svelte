@@ -1,4 +1,6 @@
 <script>
+	import { resolve } from '$app/paths';
+
 	let activeTab = 'Packages';
 
 	function selectTab(tab) {
@@ -54,7 +56,7 @@
 					<p class="mb-6 text-gray-600">You can create, view, or edit once you’ve logged in.</p>
 
 					<a
-						href="/auth/login"
+						href={resolve('/auth/login')}
 						class="rounded-md bg-[#0084FF] px-6 py-2 whitespace-nowrap text-white transition-colors hover:bg-blue-600"
 						>Log In</a
 					>
@@ -80,7 +82,7 @@
 					</p>
 
 					<a
-						href="/explore/packages"
+						href={resolve('/explore/packages')}
 						class="rounded-md bg-[#0084FF] px-6 py-2 whitespace-nowrap text-white transition-colors hover:bg-blue-600"
 					>
 						Explore Now

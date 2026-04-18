@@ -1,4 +1,5 @@
 <script>
+	import { resolve } from '$app/paths';
 	import { fade } from 'svelte/transition';
 	import { Mail } from 'lucide-svelte';
 
@@ -24,10 +25,11 @@
 
 		<!-- Email -->
 		<div class="mb-6">
-			<label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+			<label for="forgot-email" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
 			<div class="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2.5">
 				<Mail class="h-4 w-4 text-gray-400" />
 				<input
+					id="forgot-email"
 					type="email"
 					bind:value={email}
 					placeholder="Type your email address"
@@ -46,7 +48,7 @@
 		<!-- Back to Login -->
 		<p class="mt-6 text-center text-sm text-gray-500">
 			Remember your password?
-			<a href="/auth/login" class="font-medium text-[#2F80ED] hover:underline">Log in</a>
+			<a href={resolve('/auth/login')} class="font-medium text-[#2F80ED] hover:underline">Log in</a>
 		</p>
 	</div>
 </div>

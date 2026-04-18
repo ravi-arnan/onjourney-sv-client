@@ -19,7 +19,7 @@
 		<!-- Modal -->
 		<div
 			transition:scale={{ duration: 200, start: 0.95 }}
-			class="relative w-full max-w-sm rounded-2xl bg-white px-6 pb-8 pt-6 shadow-xl"
+			class="relative w-full max-w-sm rounded-2xl bg-white px-6 pt-6 pb-8 shadow-xl"
 			onclick={(event) => event.stopPropagation()}
 			onkeydown={(event) => event.key === 'Escape' && close()}
 			role="dialog"
@@ -32,17 +32,18 @@
 				onclick={close}
 			>
 				<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M6 18L18 6M6 6l12 12"
+					/>
 				</svg>
 			</button>
 
 			<!-- Illustration -->
 			<div class="mb-6 flex justify-center">
-				<img
-					src="/img/mobile-only.png"
-					alt="Mobile Only"
-					class="h-48 w-auto object-contain"
-				/>
+				<img src="/img/mobile-only.png" alt="Mobile Only" class="h-48 w-auto object-contain" />
 			</div>
 
 			<!-- Text -->

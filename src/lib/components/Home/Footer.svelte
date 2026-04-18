@@ -1,13 +1,17 @@
 <!-- Footer.svelte -->
+<script>
+	import { resolve } from '$app/paths';
+</script>
+
 <footer class="border-t border-gray-100 bg-white">
 	<div class="mx-auto max-w-6xl px-6 py-10">
 		<div class="mb-8 grid grid-cols-4 gap-8">
 			<div>
 				<p class="mb-5 text-sm font-light text-gray-400">Support</p>
 				<div class="mb-4 flex flex-col gap-3 text-sm font-light text-gray-900">
-					{#each ['Help Center', 'Safety Information', 'Cancellation Options', 'COVID-19 Regulations'] as link}
+					{#each ['Help Center', 'Safety Information', 'Cancellation Options', 'COVID-19 Regulations'] as link (link)}
 						<a
-							href={`/support/${link.toLowerCase().replace(/\s+/g, '-')}`}
+							href={resolve(`/support/${link.toLowerCase().replace(/\s+/g, '-')}`)}
 							class="mb-4 block text-xs text-gray-700 transition-colors hover:text-blue-500"
 							>{link}</a
 						>
@@ -17,9 +21,9 @@
 			<div>
 				<p class="mb-5 text-sm font-light text-gray-400">Partnership</p>
 				<div class="mb-4 flex flex-col gap-3 text-sm font-light text-gray-900">
-					{#each ['Join as Travel Agent', 'Local Transport', 'Community Forum'] as link}
+					{#each ['Join as Travel Agent', 'Local Transport', 'Community Forum'] as link (link)}
 						<a
-							href={`/partnership/${link.toLowerCase().replace(/\s+/g, '-')}`}
+							href={resolve(`/partnership/${link.toLowerCase().replace(/\s+/g, '-')}`)}
 							class="mb-4 block text-xs text-gray-700 transition-colors hover:text-blue-500"
 							>{link}</a
 						>
@@ -29,9 +33,9 @@
 			<div>
 				<p class="mb-5 text-sm font-light text-gray-400">About</p>
 				<div class="mb-4 flex flex-col gap-3 text-sm font-light text-gray-900">
-					{#each ['Blog', 'New Features', 'Careers', 'Investor'] as link}
+					{#each ['Blog', 'New Features', 'Careers', 'Investor'] as link (link)}
 						<a
-							href={`/about/${link.toLowerCase().replace(/\s+/g, '-')}`}
+							href={resolve(`/about/${link.toLowerCase().replace(/\s+/g, '-')}`)}
 							class="mb-4 block text-xs text-gray-700 transition-colors hover:text-blue-500"
 							>{link}</a
 						>
@@ -60,8 +64,12 @@
 		<div class="flex items-center justify-between border-t border-gray-100 pt-5">
 			<div class="flex items-center gap-5 text-xs font-light text-gray-600">
 				<span>© 2025 On-Journey</span>
-				<a href="/privacy" class="transition-colors hover:text-blue-500">Privacy Policy</a>
-				<a href="/terms" class="transition-colors hover:text-blue-500">Terms & Conditions</a>
+				<a href={resolve('/privacy')} class="transition-colors hover:text-blue-500"
+					>Privacy Policy</a
+				>
+				<a href={resolve('/terms')} class="transition-colors hover:text-blue-500"
+					>Terms & Conditions</a
+				>
 			</div>
 			<div class="flex items-center gap-3">
 				<!-- LinkedIn (replace Twitter) -->

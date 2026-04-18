@@ -46,19 +46,17 @@
 
 <section class="mb-8">
 	<div class="mb-9 border-t border-gray-200"></div>
-	<h2 class="mb-6 text-[40px] font-semibold leading-tight text-gray-900">
+	<h2 class="mb-6 text-[40px] leading-tight font-semibold text-gray-900">
 		Other Travel Package from Central Bali Trans
 	</h2>
 	<div class="other-packages-grid mb-8">
 		{#each items as pkg (`${pkg.name}-${pkg.price}`)}
-			<div
-				class="cursor-pointer overflow-hidden rounded-xl border border-gray-200 bg-white"
-			>
+			<div class="cursor-pointer overflow-hidden rounded-xl border border-gray-200 bg-white">
 				<div class="h-[200px] overflow-hidden bg-gray-100">
 					<img src={pkg.img} alt={pkg.name} class="h-full w-full object-cover" />
 				</div>
 				<div class="p-3">
-					<div class="mb-1 text-[15px] font-semibold leading-snug text-gray-900">{pkg.name}</div>
+					<div class="mb-1 text-[15px] leading-snug font-semibold text-gray-900">{pkg.name}</div>
 					<div class="mb-2 text-xs leading-tight text-gray-500">No facility provided.</div>
 					<div class="mb-1.5 flex items-center gap-1 text-xs">
 						<svg class="h-2.5 w-2.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">

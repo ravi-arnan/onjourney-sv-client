@@ -2,10 +2,16 @@
 	import PackageCard from './PackageCard.svelte';
 	import type { Writable } from 'svelte/store';
 	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
+
+	interface PackageItem {
+		id: string;
+		[key: string]: unknown;
+	}
 
 	interface Props {
-		packages: Writable<any[]>;
-		onToggleLike: (pkg: any) => void;
+		packages: Writable<PackageItem[]>;
+		onToggleLike: (pkg: PackageItem) => void;
 	}
 
 	let { packages, onToggleLike }: Props = $props();
@@ -21,8 +27,8 @@
 
 	<div class="mt-6 flex justify-center">
 		<a
-			href="/travel-agent/{$page.params.slug}/packages"
-			class="cursor-pointer rounded-lg border-none bg-[#2097f5] gap-1 px-4 py-2.5 text-2sm font-medium text-white transition-colors hover:bg-[#2384cf]"
+			href={resolve(`/travel-agent/${$page.params.slug}/packages`)}
+			class="text-2sm cursor-pointer gap-1 rounded-lg border-none bg-[#2097f5] px-4 py-2.5 font-medium text-white transition-colors hover:bg-[#2384cf]"
 		>
 			Our Packages
 		</a>

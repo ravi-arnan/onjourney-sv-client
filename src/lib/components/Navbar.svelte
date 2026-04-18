@@ -1,6 +1,6 @@
 <script>
+	import { resolve } from '$app/paths';
 	import { fly } from 'svelte/transition';
-	import { fade } from 'svelte/transition';
 	import OnJourneyBrand from '$lib/components/brand/OnJourneyBrand.svelte';
 	let isOpen = $state(false);
 	let isLanguageModalOpen = $state(false);
@@ -41,7 +41,6 @@
 		[...suggestedLanguages, ...allLanguages].find((l) => l.id === selectedLangId) ||
 			suggestedLanguages[0]
 	);
-
 </script>
 
 <header class="w-full border-b border-gray-200 bg-white">
@@ -51,7 +50,7 @@
 		<button class="text-2xl md:hidden" onclick={toggleMenu}> ☰ </button>
 
 		<div class={`nav-menu ${isOpen ? 'open' : ''} px-4 py-2 text-sm font-semibold`}>
-			<a href="/" class="text-gray-800 hover:text-[#2097f5]"> Join as Travel Agent </a>
+			<a href={resolve('/')} class="text-gray-800 hover:text-[#2097f5]"> Join as Travel Agent </a>
 
 			<!-- Language toggler -->
 			<button
@@ -74,9 +73,9 @@
 			</button>
 
 			<div class="ml-auto flex items-center gap-8">
-				<a href="/login" class="text-sm text-[#2097f5]">Login</a>
+				<a href={resolve('/login')} class="text-sm text-[#2097f5]">Login</a>
 
-				<a href="/auth/register" class="rounded-lg bg-[#2097f5] px-6 py-2 text-white">
+				<a href={resolve('/auth/register')} class="rounded-lg bg-[#2097f5] px-6 py-2 text-white">
 					Sign Up
 				</a>
 			</div>
@@ -100,13 +99,13 @@
 	>
 		<!-- Modal Content -->
 		<div
-			class="relative w-full max-w-[640px] rounded-[24px] bg-white px-8 md:px-10 py-8 shadow-2xl overflow-y-auto max-h-[90vh]"
+			class="relative max-h-[90vh] w-full max-w-[640px] overflow-y-auto rounded-[24px] bg-white px-8 py-8 shadow-2xl md:px-10"
 			in:fly={{ y: 200, duration: 300 }}
 			out:fly={{ y: 200, duration: 200 }}
 		>
 			<!-- Close Button -->
 			<button
-				class="absolute top-6 right-6 p-2 text-gray-800 hover:bg-gray-100 rounded-full transition-colors focus:outline-none"
+				class="absolute top-6 right-6 rounded-full p-2 text-gray-800 transition-colors hover:bg-gray-100 focus:outline-none"
 				aria-label="Close language modal"
 				onclick={toggleLanguageModal}
 			>
@@ -122,26 +121,29 @@
 				</svg>
 			</button>
 
-			<h2 class="mb-6 text-xl font-semibold tracking-tight text-gray-900">
-				Select Language
-			</h2>
+			<h2 class="mb-6 text-xl font-semibold tracking-tight text-gray-900">Select Language</h2>
 
 			<!-- Suggested Languages -->
 			<div class="mb-8">
 				<h3 class="mb-4 text-[16px] font-semibold text-gray-900">Suggested languages</h3>
-				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-					{#each suggestedLanguages as lang}
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+					{#each suggestedLanguages as lang (lang.id)}
 						<button
-							class="flex w-full cursor-pointer items-center justify-between rounded-xl px-1 py-3.5 transition-colors focus:outline-none {selectedLangId === lang.id ? 'bg-[#f0f7ff] text-[#2097f5]' : 'hover:bg-gray-50 text-gray-700'}"
+							class="flex w-full cursor-pointer items-center justify-between rounded-xl px-1 py-3.5 transition-colors focus:outline-none {selectedLangId ===
+							lang.id
+								? 'bg-[#f0f7ff] text-[#2097f5]'
+								: 'text-gray-700 hover:bg-gray-50'}"
 							onclick={() => selectLang(lang.id)}
 						>
 							<div class="flex items-center gap-3">
 								<img
 									src={`https://hatscripts.github.io/circle-flags/flags/${lang.flag}.svg`}
 									alt={lang.id}
-									class="h-6 w-6 shadow-sm rounded-full object-cover"
+									class="h-6 w-6 rounded-full object-cover shadow-sm"
 								/>
-								<span class="text-[15px] {selectedLangId === lang.id ? 'font-medium' : ''}">{lang.name}</span>
+								<span class="text-[15px] {selectedLangId === lang.id ? 'font-medium' : ''}"
+									>{lang.name}</span
+								>
 							</div>
 							{#if selectedLangId === lang.id}
 								<svg
@@ -165,19 +167,24 @@
 			<!-- All Languages -->
 			<div>
 				<h3 class="mb-4 text-[16px] font-semibold text-gray-900">All languages</h3>
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-					{#each allLanguages as lang}
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{#each allLanguages as lang (lang.id)}
 						<button
-							class="flex w-full cursor-pointer items-center justify-between rounded-xl px-4 py-3.5 transition-colors focus:outline-none {selectedLangId === lang.id ? 'bg-[#f0f7ff] text-[#2097f5]' : 'hover:bg-gray-50 text-gray-700'}"
+							class="flex w-full cursor-pointer items-center justify-between rounded-xl px-4 py-3.5 transition-colors focus:outline-none {selectedLangId ===
+							lang.id
+								? 'bg-[#f0f7ff] text-[#2097f5]'
+								: 'text-gray-700 hover:bg-gray-50'}"
 							onclick={() => selectLang(lang.id)}
 						>
 							<div class="flex items-center gap-3">
 								<img
 									src={`https://hatscripts.github.io/circle-flags/flags/${lang.flag}.svg`}
 									alt={lang.id}
-									class="h-6 w-6 shadow-sm rounded-full object-cover"
+									class="h-6 w-6 rounded-full object-cover shadow-sm"
 								/>
-								<span class="text-[15px] {selectedLangId === lang.id ? 'font-medium' : ''}">{lang.name}</span>
+								<span class="text-[15px] {selectedLangId === lang.id ? 'font-medium' : ''}"
+									>{lang.name}</span
+								>
 							</div>
 							{#if selectedLangId === lang.id}
 								<svg

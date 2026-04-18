@@ -1,10 +1,10 @@
 <script>
 	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
 
 	let { pkg, onToggleLike } = $props();
 
 	const slug = $derived($page.params.slug);
-	const detailUrl = $derived(`/travel-agent/${slug}/packages/detailpackages/${pkg.id}`);
 </script>
 
 <div
@@ -16,15 +16,15 @@
 			<div
 				class="h-5 w-5 shrink-0 overflow-hidden rounded-full border border-gray-200 bg-yellow-50"
 			>
-				<img src='/agent-logo.png' alt={pkg.agentName} class="h-full w-full object-cover" />
+				<img src="/agent-logo.png" alt={pkg.agentName} class="h-full w-full object-cover" />
 			</div>
-			<span class="line-clamp-1 text-md font-semibold hover:underline">PT. Bali Sundaram...</span>
+			<span class="text-md line-clamp-1 font-semibold hover:underline">PT. Bali Sundaram...</span>
 		</div>
-		<span class="rounded-lg px-2 py-0.5 text-xs font-semibold bg-yellow-400 text-black">Gold</span>
+		<span class="rounded-lg bg-yellow-400 px-2 py-0.5 text-xs font-semibold text-black">Gold</span>
 	</div>
 
 	<!-- Package Image -->
-	<a href={detailUrl}>
+	<a href={resolve(`/travel-agent/${slug}/packages/detailpackages/${pkg.id}`)}>
 		<div class="relative h-40 overflow-hidden bg-blue-100">
 			{#if pkg.image}
 				<img
@@ -65,8 +65,11 @@
 
 	<!-- Package Info -->
 	<div class="space-y-2.5 p-5">
-		<a href={detailUrl} class="hover:underline">
-			<h4 class="line-clamp-2 leading-snug text-base font-semibold text-gray-900">{pkg.title}</h4>
+		<a
+			href={resolve(`/travel-agent/${slug}/packages/detailpackages/${pkg.id}`)}
+			class="hover:underline"
+		>
+			<h4 class="line-clamp-2 text-base leading-snug font-semibold text-gray-900">{pkg.title}</h4>
 		</a>
 		<p class="text-xs text-gray-400">{pkg.tags}</p>
 		<div class="mt-2 flex items-center">

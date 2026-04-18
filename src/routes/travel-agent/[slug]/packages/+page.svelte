@@ -52,7 +52,6 @@
 			badge: 'Gold',
 			noFacility: true,
 			type: 'non-seasonal'
-			
 		},
 		{
 			id: 5,
@@ -126,7 +125,6 @@
 
 <PackagesContent
 	{activeFilter}
-	{filteredPackages}
 	{displayedPackages}
 	{hasMore}
 	onFilterChange={handleFilterChange}

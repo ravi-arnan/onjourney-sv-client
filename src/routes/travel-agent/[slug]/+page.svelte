@@ -40,7 +40,6 @@
 			liked: false,
 			co2: '89.25 kg CO₂e'
 		}
-		
 	]);
 
 	function toggleLike(pkg) {

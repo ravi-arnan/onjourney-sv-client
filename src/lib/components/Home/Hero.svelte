@@ -1,4 +1,5 @@
 <script>
+	import { resolve } from '$app/paths';
 	import { onMount, onDestroy } from 'svelte';
 
 	const images = [
@@ -48,7 +49,8 @@
 		isDragging = false;
 		const diff = startX - e.clientX;
 		if (Math.abs(diff) > dragThreshold) {
-			diff > 0 ? next() : prev();
+			if (diff > 0) next();
+			else prev();
 		}
 		startAutoPlay();
 	}
@@ -69,7 +71,8 @@
 	function onTouchEnd(e) {
 		const diff = startX - e.changedTouches[0].clientX;
 		if (Math.abs(diff) > dragThreshold) {
-			diff > 0 ? next() : prev();
+			if (diff > 0) next();
+			else prev();
 		}
 		startAutoPlay();
 	}
@@ -99,6 +102,8 @@
 
 	<h2 class="mb-5 text-2xl font-bold text-gray-900">Offers For You</h2>
 
+	<!-- Carousel drag surface: mouse/touch handlers are intentional. -->
+	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div
 		class="group relative w-full cursor-grab overflow-hidden rounded-xl bg-gray-100 shadow-sm select-none active:cursor-grabbing"
 		on:mousedown={onMouseDown}
@@ -110,9 +115,9 @@
 		aria-label="Image carousel"
 	>
 		<!-- Images -->
-		{#each images as img, i}
+		{#each images as img, i (img)}
 			<img
-				src={img}
+				src={resolve(img)}
 				alt="Offer {i + 1}"
 				draggable="false"
 				on:dragstart|preventDefault
@@ -125,6 +130,8 @@
 
 		<!-- Prev Button -->
 		<button
+			type="button"
+			aria-label="Previous offer"
 			class="absolute top-1/2 left-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/30 text-[#0084FF] transition-colors hover:bg-white/80"
 			on:click|stopPropagation={prev}
 		>
@@ -136,6 +143,8 @@
 
 		<!-- Next Button -->
 		<button
+			type="button"
+			aria-label="Next offer"
 			class="absolute top-1/2 right-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/30 text-[#0084FF] transition-colors hover:bg-white/80"
 			on:click|stopPropagation={next}
 		>
@@ -147,8 +156,10 @@
 
 		<!-- Dots -->
 		<div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2">
-			{#each images as _, i}
+			{#each [...images.keys()] as i (i)}
 				<button
+					type="button"
+					aria-label="Go to offer {i + 1}"
 					class="rounded-full transition-all duration-300 {i === current
 						? 'h-2.5 w-2.5 bg-[#0084FF]'
 						: 'h-2 w-2 bg-white opacity-60 hover:opacity-100'}"

@@ -23,7 +23,9 @@
 <aside class="sticky top-25 w-full shrink-0 self-start">
 	<div>
 		<div class="rounded-xl border border-gray-200 p-6 text-start">
-			<div class="mb-4 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-50 p-2">
+			<div
+				class="mb-4 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-50 p-2"
+			>
 				<div class="flex h-12 w-12 items-center justify-center text-gray-300">
 					<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
@@ -56,7 +58,7 @@
 				class="mb-3 flex w-2/3 justify-around overflow-hidden rounded-lg border border-gray-200 py-3"
 			>
 				<div class="flex flex-row flex-wrap items-center justify-center gap-1.5">
-					<img src="/img/sf.png" class="w-3.5 h-3.5 inline-block" alt="star" />
+					<img src="/img/sf.png" class="inline-block h-3.5 w-3.5" alt="star" />
 					<span class="text-sm font-semibold">5.0</span>
 				</div>
 				<div class="border border-gray-200"></div>
@@ -66,7 +68,7 @@
 			</div>
 
 			<div class="flex items-center gap-2 py-2 text-sm text-gray-700">
-				<img src="/img/sb1.png" class="w-3.5 h-3.5 inline-block" alt="star" />
+				<img src="/img/sb1.png" class="inline-block h-3.5 w-3.5" alt="star" />
 				0 Reviews
 			</div>
 
