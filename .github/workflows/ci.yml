@@ -19,10 +19,12 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          # Pin agar bun.lock tidak bergeser antar patch CI vs lokal
+          bun-version: '1.3.12'
 
       - name: Install
-        run: bun install --frozen-lockfile
+        # --ignore-scripts: hindari `prepare` (playwright download) di CI; `check` menjalankan svelte-kit sync
+        run: bun install --frozen-lockfile --ignore-scripts
 
       - name: Check
         run: bun run check

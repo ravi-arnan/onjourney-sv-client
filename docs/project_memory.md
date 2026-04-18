@@ -1,5 +1,21 @@
 # Project Memory
 
+## 2026-04-18 - Lockfile + CI: frozen install
+
+### Current State
+
+- `bun.lock` diselaraskan dengan `package.json` (perubahan dependency seperti `@types/node`, `lucide-svelte`) sehingga `bun install --frozen-lockfile` lolos termasuk di Bun **1.3.12**.
+- [`.github/workflows/ci.yml`](../.github/workflows/ci.yml): `bun-version` dipin ke **1.3.12**; install memakai **`--ignore-scripts`** agar `prepare` tidak mengunduh Playwright di runner (unit test + `check` tetap memakai `svelte-kit sync` lewat script `check`).
+
+### Decisions
+
+- Pin versi Bun di CI mengurangi drift format/resolusi lockfile dibanding `latest`.
+- `--ignore-scripts` di CI mempercepat job dan menghindari unduhan browser Playwright saat e2e tidak dijalankan di workflow ini.
+
+### Next Steps
+
+- Setelah pull, jalankan `bun install` lokal sekali bila versi Bun berbeda, lalu commit `bun.lock` jika masih berubah.
+
 ## 2026-04-18 - Pipeline `staging` → `main` + CI
 
 ### Current State
