@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { fade } from 'svelte/transition';
 	import { Eye, EyeOff, Mail, Lock, User } from 'lucide-svelte';
 
@@ -104,7 +105,7 @@
 		<!-- Login -->
 		<p class="mt-6 text-center text-sm text-gray-500">
 			Already have an account?
-			<a href="/auth/login" class="font-medium text-[#2F80ED] hover:underline">Log in</a>
+			<a href={resolve('/auth/login')} class="font-medium text-[#2F80ED] hover:underline">Log in</a>
 		</p>
 	</div>
 </div>

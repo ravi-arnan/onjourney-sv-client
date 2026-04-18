@@ -1,9 +1,15 @@
+<script>
+	import { resolve } from '$app/paths';
+</script>
+
 <section class="mx-auto mt-[48px] flex w-[1200px] flex-col gap-[32px] pb-[80px] font-sans">
 	<div class="flex h-[36px] w-[1200px] items-center justify-between">
 		<h2 class="text-2xl font-semibold text-gray-900">Discover Travel Agent</h2>
 
 		<div class="flex gap-[8px]">
 			<button
+				type="button"
+				aria-label="Scroll discover section left"
 				class="flex h-[36px] w-[36px] items-center justify-center rounded-full border border-gray-300 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
 			>
 				<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -11,6 +17,8 @@
 				</svg>
 			</button>
 			<button
+				type="button"
+				aria-label="Scroll discover section right"
 				class="flex h-[36px] w-[36px] items-center justify-center rounded-full border border-gray-300 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
 			>
 				<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -59,6 +67,8 @@
 						></path></svg
 					>
 					<button
+						type="button"
+						aria-label="Save agent"
 						class="absolute top-[10px] right-[28px] text-gray-400 transition-colors hover:text-red-500"
 					>
 						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
@@ -78,7 +88,7 @@
 					</p>
 				</div>
 				<a
-					href="#"
+					href={resolve('/explore/agents')}
 					class="text-sm font-semibold text-[#0084FF] transition-colors hover:text-blue-700"
 					>See Details</a
 				>
@@ -113,6 +123,8 @@
 				<div class="h-[200px] w-full overflow-hidden rounded-lg bg-gray-100">
 					<img src="/img/1.jpg" alt="Agent Tour" class="h-full w-full object-cover" />
 					<button
+						type="button"
+						aria-label="Save agent"
 						class="absolute top-[10px] right-[28px] text-white/80 transition-colors hover:text-red-500"
 					>
 						<svg class="h-6 w-6 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24"
@@ -131,7 +143,7 @@
 					</p>
 				</div>
 				<a
-					href="#"
+					href={resolve('/explore/agents')}
 					class="text-sm font-semibold text-[#0084FF] transition-colors hover:text-blue-700"
 					>See Details</a
 				>
@@ -175,6 +187,8 @@
 						></path></svg
 					>
 					<button
+						type="button"
+						aria-label="Save agent"
 						class="absolute top-[10px] right-[28px] text-gray-400 transition-colors hover:text-red-500"
 					>
 						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
@@ -193,7 +207,7 @@
 					</p>
 				</div>
 				<a
-					href="#"
+					href={resolve('/explore/agents')}
 					class="text-sm font-semibold text-[#0084FF] transition-colors hover:text-blue-700"
 					>See Details</a
 				>
@@ -237,6 +251,8 @@
 						></path></svg
 					>
 					<button
+						type="button"
+						aria-label="Save agent"
 						class="absolute top-[10px] right-[28px] text-gray-400 transition-colors hover:text-red-500"
 					>
 						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
@@ -255,7 +271,7 @@
 					</p>
 				</div>
 				<a
-					href="#"
+					href={resolve('/explore/agents')}
 					class="text-sm font-semibold text-[#0084FF] transition-colors hover:text-blue-700"
 					>See Details</a
 				>

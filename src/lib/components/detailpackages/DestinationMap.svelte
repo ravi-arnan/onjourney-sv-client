@@ -24,7 +24,11 @@
 				attribution: '&copy; OpenStreetMap contributors'
 			}).addTo(map);
 			const bounds = L.latLngBounds(baliLocations);
-			const icon = L.divIcon({ className: 'onjourney-pin', iconSize: [22, 22], iconAnchor: [11, 11] });
+			const icon = L.divIcon({
+				className: 'onjourney-pin',
+				iconSize: [22, 22],
+				iconAnchor: [11, 11]
+			});
 			baliLocations.forEach((coords) => L.marker(coords, { icon }).addTo(map));
 			map.fitBounds(bounds, { padding: [35, 35] });
 		};
@@ -35,7 +39,9 @@
 </script>
 
 <section class="mb-7">
-	<h2 class="mb-3 text-[36px] font-semibold leading-tight text-gray-900">Where is the destination located</h2>
+	<h2 class="mb-3 text-[36px] leading-tight font-semibold text-gray-900">
+		Where is the destination located
+	</h2>
 	<div class="map-shell overflow-hidden rounded-2xl border border-gray-200">
 		<div id="destination-map" class="h-full w-full" aria-label="Map of Bali destinations"></div>
 	</div>

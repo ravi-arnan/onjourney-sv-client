@@ -4,8 +4,7 @@
 	import PackageGrid from './PackageGrid.svelte';
 	import LoadMoreButton from './LoadMoreButton.svelte';
 
-	let { activeFilter, filteredPackages, displayedPackages, hasMore, onFilterChange, onLoadMore } =
-		$props();
+	let { activeFilter, displayedPackages, hasMore, onFilterChange, onLoadMore } = $props();
 </script>
 
 <div class="p-1">

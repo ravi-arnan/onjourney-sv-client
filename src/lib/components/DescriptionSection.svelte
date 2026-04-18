@@ -13,8 +13,7 @@
 </script>
 
 <section class="mb-6">
-	<h3 class="mb-2 text-lg font-semibold text-gray-900">
-		Description</h3>
+	<h3 class="mb-2 text-lg font-semibold text-gray-900">Description</h3>
 	<p class="text-1sm leading-relaxed text-gray-900">
 		{isExpanded ? fullText : shortText}
 		<button

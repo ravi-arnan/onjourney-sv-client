@@ -21,6 +21,7 @@
 	}
 
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 </script>
 
 {#if isOpen}
@@ -68,7 +69,7 @@
 			<button
 				type="button"
 				class="flex cursor-pointer items-center gap-2 transition-colors hover:text-black"
-				onclick={() => goto('/saved')}
+				onclick={() => goto(resolve('/saved'))}
 			>
 				<Bookmark class="h-4 w-4" />
 				<span>Saved</span>
@@ -76,7 +77,7 @@
 			<button
 				type="button"
 				class="flex cursor-pointer items-center gap-2 transition-colors hover:text-black"
-				onclick={() => goto('/travel-story')}
+				onclick={() => goto(resolve('/travel-story'))}
 			>
 				<History class="h-4 w-4" />
 				<span>History</span>

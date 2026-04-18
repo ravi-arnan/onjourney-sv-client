@@ -8,6 +8,7 @@ description: Implements SEO-intensive features in SvelteKit with SSR-first rende
 ## When To Use
 
 Use this skill for:
+
 - route-level SEO changes in SvelteKit
 - metadata and social preview tags
 - JSON-LD and rich result readiness

@@ -1,3 +1,7 @@
+<script>
+	import { resolve } from '$app/paths';
+</script>
+
 <section class="mx-auto w-[1200px] pt-[80px] pb-8 font-sans">
 	<div class="mb-[32px] flex h-[32px] w-full items-center justify-between">
 		<div class="flex items-center gap-[16px]">
@@ -12,7 +16,7 @@
 			</svg>
 		</div>
 		<a
-			href="/explore/destination"
+			href={resolve('/explore/destination')}
 			class="text-sm font-medium text-gray-600 transition-colors hover:text-[#0084FF]">Show More</a
 		>
 	</div>

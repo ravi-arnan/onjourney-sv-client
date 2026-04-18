@@ -1,4 +1,6 @@
 <script>
+	import { resolve } from '$app/paths';
+
 	let guests = 1;
 	let includeHotels = false;
 	let includeMeals = false;
@@ -26,7 +28,7 @@
 		<h1 class="hero-title">Ready to start your own journey?</h1>
 		<p class="hero-subtitle">
 			Plan your trip simply by filling out the form below and start your journey!
-			<a href="#">learn more</a>
+			<button type="button" class="learn-more-link">learn more</button>
 		</p>
 	</div>
 </section>
@@ -40,13 +42,13 @@
 					Which destination are you looking for?
 				</div>
 
-				<a href="/destinations" class="see-destination"> See destination list › </a>
+				<a href={resolve('/destinations')} class="see-destination"> See destination list › </a>
 			</div>
 
 			<div class="card-body">
 				<div class="left">
-					<label>Travel Guide Language</label>
-					<select>
+					<label for="pt-lang">Travel Guide Language</label>
+					<select id="pt-lang">
 						<option>What language?</option>
 					</select>
 
@@ -79,23 +81,23 @@
 						</div>
 					</div>
 
-					<label>Transportation Type</label>
-					<select>
+					<label for="pt-transport">Transportation Type</label>
+					<select id="pt-transport">
 						<option>Select transportation type</option>
 					</select>
 
-					<label>Vehicle</label>
-					<select>
+					<label for="pt-vehicle">Vehicle</label>
+					<select id="pt-vehicle">
 						<option>Select vehicle</option>
 					</select>
 				</div>
 
 				<div class="right">
-					<label>Trip Length</label>
-					<input type="date" bind:value={tripLength} class="input" />
+					<label for="pt-trip-length">Trip Length</label>
+					<input id="pt-trip-length" type="date" bind:value={tripLength} class="input" />
 
-					<label style="margin-top:18px;">Choose Travel Agent</label>
-					<select bind:value={travelAgent}>
+					<label for="pt-agent" style="margin-top:18px;">Choose Travel Agent</label>
+					<select id="pt-agent" bind:value={travelAgent}>
 						<option value="">Select travel agent</option>
 						<option value="agent1">Bali Holiday Tour</option>
 						<option value="agent2">Sunrise Travel</option>
@@ -111,7 +113,7 @@
 					</div>
 
 					<div class="destination-box">
-						{#each destinations as item}
+						{#each destinations as item (item.day)}
 							<div class="destination-item">
 								<div class="timeline">
 									<span>Day {item.day}</span>
@@ -159,10 +161,15 @@
 		margin-bottom: 40px;
 	}
 
-	.hero-subtitle a {
+	.hero-subtitle .learn-more-link {
 		color: #2563eb;
-		text-decoration: none;
 		font-weight: 500;
+		background: none;
+		border: none;
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
+		text-decoration: underline;
 	}
 
 	.hero-section {

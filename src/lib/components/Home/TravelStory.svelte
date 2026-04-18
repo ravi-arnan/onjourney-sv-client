@@ -4,6 +4,8 @@
 
 		<div class="flex h-[36px] w-[80px] gap-[8px]">
 			<button
+				type="button"
+				aria-label="Scroll travel stories left"
 				class="flex h-[36px] w-[36px] items-center justify-center rounded-full border border-gray-300 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
 			>
 				<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -11,6 +13,8 @@
 				</svg>
 			</button>
 			<button
+				type="button"
+				aria-label="Scroll travel stories right"
 				class="flex h-[36px] w-[36px] items-center justify-center rounded-full border border-gray-300 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
 			>
 				<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">

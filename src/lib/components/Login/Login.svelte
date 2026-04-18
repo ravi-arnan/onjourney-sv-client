@@ -1,4 +1,5 @@
 <script>
+	import { resolve } from '$app/paths';
 	import { fade } from 'svelte/transition';
 	import { Eye, EyeOff, Mail, Lock } from 'lucide-svelte';
 
@@ -20,10 +21,11 @@
 
 		<!-- Email -->
 		<div class="mb-4">
-			<label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+			<label for="login-email" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
 			<div class="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2.5">
 				<Mail class="h-4 w-4 text-gray-400" />
 				<input
+					id="login-email"
 					type="email"
 					bind:value={email}
 					placeholder="Type your email address"
@@ -35,14 +37,15 @@
 		<!-- Password -->
 		<div class="mb-6">
 			<div class="mb-1 flex items-center justify-between">
-				<label class="text-sm font-medium text-gray-700">Password</label>
-				<a href="/auth/forgot-password" class="text-sm text-[#2F80ED] hover:underline"
+				<label for="login-password" class="text-sm font-medium text-gray-700">Password</label>
+				<a href={resolve('/auth/forgot-password')} class="text-sm text-[#2F80ED] hover:underline"
 					>Forgot Password?</a
 				>
 			</div>
 			<div class="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2.5">
 				<Lock class="h-4 w-4 text-gray-400" />
 				<input
+					id="login-password"
 					type={showPassword ? 'text' : 'password'}
 					bind:value={password}
 					placeholder="Type your password"
@@ -90,7 +93,9 @@
 		<!-- Register -->
 		<p class="mt-6 text-center text-sm text-gray-500">
 			New to On Journey?
-			<a href="/auth/register" class="font-medium text-[#2F80ED] hover:underline">Register</a>
+			<a href={resolve('/auth/register')} class="font-medium text-[#2F80ED] hover:underline"
+				>Register</a
+			>
 		</p>
 	</div>
 </div>

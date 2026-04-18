@@ -1,5 +1,6 @@
 <script>
 	// TopNavbar.svelte
+	import { resolve } from '$app/paths';
 	import OnJourneyBrand from '$lib/components/brand/OnJourneyBrand.svelte';
 </script>
 
@@ -32,9 +33,12 @@
 			</button>
 
 			<div class="ml-2 flex items-center gap-4">
-				<a href="/auth/login" class="text-[#0084FF] transition-colors hover:text-blue-700">Login</a>
 				<a
-					href="/auth/register"
+					href={resolve('/auth/login')}
+					class="text-[#0084FF] transition-colors hover:text-blue-700">Login</a
+				>
+				<a
+					href={resolve('/auth/register')}
 					class="rounded-md bg-[#0084FF] px-6 py-2 whitespace-nowrap text-white transition-colors hover:bg-blue-600"
 					>Sign Up</a
 				>

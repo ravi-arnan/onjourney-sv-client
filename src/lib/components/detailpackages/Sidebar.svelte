@@ -1,5 +1,7 @@
 <!-- Sidebar.svelte -->
 <script>
+	import { resolve } from '$app/paths';
+
 	let { experiences } = $props();
 
 	const defaultExperiences = [
@@ -33,7 +35,9 @@
 </script>
 
 <aside class="w-full">
-	<div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:sticky lg:top-24">
+	<div
+		class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:sticky lg:top-24"
+	>
 		<!-- Experiences Header -->
 		<div class="border-b border-gray-50 px-4 pt-4 pb-3">
 			<div class="flex items-center justify-between">
@@ -61,31 +65,44 @@
 		<div class="px-4 pt-4 pb-2">
 			{#each items as exp, i (`${exp.name}-${i}`)}
 				<div class="relative flex items-center gap-3 pb-4">
-
 					<!-- Left column: dashed line + badge -->
-					<div class="relative flex flex-col items-center h-10" style="width: 20px; flex-shrink: 0;">
-						<div class="absolute flex h-5 w-5 items-center justify-center rounded-full border border-[#90c4f8] bg-[#e8f4fe] text-[10px] font-bold text-[#2097f5] z-10"
-							style="top: 50%; transform: translateY(-50%);">
+					<div
+						class="relative flex h-10 flex-col items-center"
+						style="width: 20px; flex-shrink: 0;"
+					>
+						<div
+							class="absolute z-10 flex h-5 w-5 items-center justify-center rounded-full border border-[#90c4f8] bg-[#e8f4fe] text-[10px] font-bold text-[#2097f5]"
+							style="top: 50%; transform: translateY(-50%);"
+						>
 							{i + 1}
 						</div>
 						{#if i < items.length - 1}
 							<!-- Dashed line connecting badges -->
-							<div class="dashed-line absolute left-1/2 -translate-x-1/2 z-0" style="top: 50%; bottom: -30px; width: 2px;"></div>
+							<div
+								class="dashed-line absolute left-1/2 z-0 -translate-x-1/2"
+								style="top: 50%; bottom: -30px; width: 2px;"
+							></div>
 						{/if}
 					</div>
 
 					<!-- Thumbnail + text -->
 					<div class="flex items-center gap-3">
-						<img src={exp.img} alt={exp.name} class="h-[42px] w-[42px] shrink-0 rounded-[10px] object-cover" />
+						<img
+							src={exp.img}
+							alt={exp.name}
+							class="h-[42px] w-[42px] shrink-0 rounded-[10px] object-cover"
+						/>
 						<div>
-							<div class="mb-0.5 text-[10px] text-gray-500 font-medium">Day {exp.day} • {exp.time}</div>
+							<div class="mb-0.5 text-[10px] font-medium text-gray-500">
+								Day {exp.day} • {exp.time}
+							</div>
 							<a
-								href={`/experience/${exp.name.toLowerCase().replace(/\s+/g, '-')}`}
-								class="text-xs font-semibold leading-tight text-gray-900 underline underline-offset-2 transition-colors hover:text-[#2097f5]"
-							>{exp.name}</a>
+								href={resolve(`/experience/${exp.name.toLowerCase().replace(/\s+/g, '-')}`)}
+								class="text-xs leading-tight font-semibold text-gray-900 underline underline-offset-2 transition-colors hover:text-[#2097f5]"
+								>{exp.name}</a
+							>
 						</div>
 					</div>
-
 				</div>
 			{/each}
 		</div>
@@ -145,11 +162,12 @@
 			<button
 				class="mb-4 flex w-full flex-col items-center justify-center rounded-full border border-[#d2e8fb] bg-white py-2 shadow-sm transition-colors hover:bg-blue-50"
 			>
-				<div class="text-sm font-medium leading-tight text-[#2097f5]">Reserve with Deposit</div>
+				<div class="text-sm leading-tight font-medium text-[#2097f5]">Reserve with Deposit</div>
 				<div class="mt-0.5 text-[11px] leading-tight text-[#5cb0f6]">(Pay Rp 150,000 now)</div>
 			</button>
 			<div class="text-[11px] leading-relaxed text-gray-400">
-				Pay a small deposit today to secure your booking. Deposit is non-refundable as it covers partner fees.
+				Pay a small deposit today to secure your booking. Deposit is non-refundable as it covers
+				partner fees.
 			</div>
 		</div>
 	</div>

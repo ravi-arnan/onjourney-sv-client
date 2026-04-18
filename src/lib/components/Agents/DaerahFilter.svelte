@@ -60,7 +60,7 @@
 			on:scroll={updateArrows}
 			class="no-scrollbar flex gap-4 overflow-x-auto scroll-smooth px-10"
 		>
-			{#each regions as region}
+			{#each regions as region (region)}
 				<button
 					on:click={() => selectRegion(region)}
 					class={selectedRegion === region
