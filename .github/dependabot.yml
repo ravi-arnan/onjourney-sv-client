@@ -3,29 +3,31 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
+    # Dependency bumps integrate via staging first (see docs/pipeline-staging-main.md)
+    target-branch: 'staging'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "Asia/Jakarta"
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Jakarta'
     # bun.lock + package.json; CI should run bun install && bun run check
     open-pull-requests-limit: 15
     commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
+      prefix: 'chore(deps)'
+      include: 'scope'
     labels:
-      - "dependencies"
-      - "javascript"
+      - 'dependencies'
+      - 'javascript'
     # Batch minor + patch into fewer PRs; majors stay separate for review
     groups:
       npm-minor-patch:
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
+          - 'minor'
+          - 'patch'
     # Optional: ignore noisy or breaking majors until manually bumped
     # ignore:
     #   - dependency-name: "svelte"
