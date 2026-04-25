@@ -4,21 +4,25 @@
 	import Header from '$lib/components/booking/Header.svelte';
 </script>
 
-<div class="top">
-	<Header />
+<div class="layout">
+	<div class="top">
+		<Header />
+	</div>
+
+	<main class="content">
+		<slot />
+	</main>
+
+	<BottomNav />
+	<Footer />
 </div>
 
-<main class="content">
-	<slot />
-</main>
-
-<BottomNav />
-<Footer />
-
 <style>
-	/* .content {
-    padding: 16px 64px; 
-  } */
+	.layout {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
 
 	.top {
 		position: sticky; /* ⬅️ ini kunci */
@@ -26,11 +30,9 @@
 		z-index: 1000; /* biar tidak ketiban konten */
 	}
 
-	/* @media (max-width: 1024px) {
-    .content {
-      padding: 16px 32px;
-    }
-  } */
+	.content {
+		flex: 1 0 auto; /* grow to push footer to bottom on short pages */
+	}
 
 	/* ===================== */
 	/* MOBILE */

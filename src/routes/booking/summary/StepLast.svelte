@@ -1,4 +1,6 @@
 <script>
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import Container from '$lib/components/layout/Container.svelte';
 
 	const steps = [
@@ -6,12 +8,30 @@
 		{ number: 2, label: 'Enter Info', done: true },
 		{ number: 3, label: 'Payment', done: false, active: true }
 	];
+
+	const stepRoutes = {
+		1: '/dashboard',
+		2: '/booking',
+		3: '/booking/payment'
+	};
+
+	function go(n) {
+		const current = steps.find((s) => s.active)?.number;
+		if (n === current) return;
+		goto(resolve(stepRoutes[n]));
+	}
 </script>
 
 <div class="step-bar">
 	<Container>
 		{#each steps as step, i (step.number)}
-			<div class="step" class:done={step.done} class:active={step.active}>
+			<button
+				type="button"
+				class="step"
+				class:done={step.done}
+				class:active={step.active}
+				on:click={() => go(step.number)}
+			>
 				<div class="step-circle">
 					{#if step.done}
 						<svg
@@ -29,7 +49,7 @@
 					{/if}
 				</div>
 				<span class="step-label">{step.label}</span>
-			</div>
+			</button>
 			{#if i < steps.length - 1}
 				<div class="step-line" class:done={step.done}></div>
 			{/if}
@@ -55,6 +75,20 @@
 		align-items: center;
 		gap: 8px;
 		flex-shrink: 0;
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		font: inherit;
+		color: inherit;
+	}
+	.step:hover {
+		opacity: 0.85;
+	}
+	.step:focus-visible {
+		outline: 2px solid #3f9ef0;
+		outline-offset: 2px;
+		border-radius: 4px;
 	}
 
 	.step-circle {

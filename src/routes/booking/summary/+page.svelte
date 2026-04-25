@@ -5,6 +5,7 @@
 	import { resolve } from '$app/paths';
 	import StepLast from './StepLast.svelte';
 	import Container from '$lib/components/layout/Container.svelte';
+	import BackButton from '$lib/components/booking/BackButton.svelte';
 
 	// ── State ──────────────────────────────────────────────
 	let paymentType = 'full';
@@ -117,6 +118,7 @@
 <div class="page">
 	<Container>
 		<div class="left">
+			<BackButton to="/booking/payment" />
 			<p class="page-title">Payment Summary</p>
 
 			<!-- Info Banner -->

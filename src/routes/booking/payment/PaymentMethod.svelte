@@ -263,17 +263,32 @@
 							id="amount-{split.id}"
 							type="text"
 							value={formatRp(split.amount)}
-							readonly={splits.length === MAX_SPLITS && index === MAX_SPLITS - 1}
-							class:readonly={splits.length === MAX_SPLITS && index === MAX_SPLITS - 1}
+							readonly={index === splits.length - 1}
+							class:readonly={index === splits.length - 1}
 							on:focus={(e) => {
-								if (!(splits.length === MAX_SPLITS && index === MAX_SPLITS - 1)) {
+								if (index !== splits.length - 1) {
 									e.target.value = split.amount;
 								}
 							}}
 							on:blur={(e) => {
-								if (splits.length === MAX_SPLITS && index === MAX_SPLITS - 1) return;
-								const val = parseInt(e.target.value) || 0;
-								splits = splits.map((s) => (s.id === split.id ? { ...s, amount: val } : s));
+								if (index === splits.length - 1) return;
+								let val = parseInt(e.target.value) || 0;
+								// Clamp so the auto-calculated last split can't go negative
+								const otherEarlierSum = splits
+									.slice(0, -1)
+									.reduce((acc, s, i) => (i === index ? acc : acc + s.amount), 0);
+								const maxAllowed = Math.max(0, totalAmount - otherEarlierSum);
+								val = Math.max(0, Math.min(val, maxAllowed));
+								// Update this split, then recalculate the last (remainder) split
+								const next = splits.map((s, i) => (i === index ? { ...s, amount: val } : s));
+								const earlierSum = next
+									.slice(0, -1)
+									.reduce((acc, s) => acc + s.amount, 0);
+								next[next.length - 1] = {
+									...next[next.length - 1],
+									amount: totalAmount - earlierSum
+								};
+								splits = next;
 								e.target.value = formatRp(val);
 							}}
 						/>

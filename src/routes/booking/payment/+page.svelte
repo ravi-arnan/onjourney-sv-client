@@ -5,6 +5,7 @@
 	import PaymentMethod from './PaymentMethod.svelte';
 	import OrderFinal from './OrderFinal.svelte';
 	import Container from '$lib/components/layout/Container.svelte';
+	import BackButton from '$lib/components/booking/BackButton.svelte';
 
 	const bookingId = '996392464';
 	const subtotalItems = [
@@ -44,6 +45,7 @@
 <div class="page">
 	<Container>
 		<div class="left">
+			<BackButton to="/booking" />
 			<PaymentMethod
 				bind:selectedPaymentType
 				bind:selectedFullMethod

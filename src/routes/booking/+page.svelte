@@ -5,6 +5,7 @@
 	import GuestDetail from './GuestDetail.svelte';
 	import OrderSummary from './OrderSummary.svelte';
 	import Container from '$lib/components/layout/Container.svelte';
+	import BackButton from '$lib/components/booking/BackButton.svelte';
 
 	// Order summary
 	const bookingId = '996392464';
@@ -22,6 +23,7 @@
 	<Container>
 		<!-- LEFT COLUMN -->
 		<div class="left">
+			<BackButton to="/dashboard" />
 			<GuestDetail />
 			<section class="card">
 				<h2 class="section-title">Trip Summary</h2>
@@ -39,7 +41,7 @@
 	/* ===== PAGE LAYOUT ===== */
 	.page {
 		margin: 24px auto;
-		padding: 0 24px;
+		padding: 0 66px;
 	}
 
 	/* INI KUNCINYA */

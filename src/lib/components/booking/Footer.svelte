@@ -25,12 +25,11 @@
 
 <style>
 	.footer-mobile {
-		padding: 30px 62px 0px;
+		padding: 0 62px;
 		font-size: 12px;
 		align-items: center;
 		color: #000;
 		background-color: #ffffff;
-		border-top: 1px solid #e2e2e2;
 	}
 
 	.bottom {
@@ -39,6 +38,8 @@
 		justify-content: space-between;
 		gap: 16px;
 		flex-wrap: wrap;
+		padding: 24px 0;
+		border-top: 1px solid #e2e2e2;
 	}
 
 	.left {
